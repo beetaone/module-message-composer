@@ -6,11 +6,18 @@ from os import getenv
 from logging import getLogger
 from bottle import run
 from api import setup_logging
+from module.validator import validation_requirements
+import sys
 
 setup_logging()
 log = getLogger("main")
 
 def main():
+    validation_error = validation_requirements()
+    if validation_error:
+        log.error(validation_error)
+        sys.exit(validation_error)
+
     log.info(
         "%s running on %s at port %s with end-point set to %s",
         getenv("MODULE_NAME"),
