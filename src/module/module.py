@@ -6,9 +6,11 @@ Edit this file to implement your module.
 """
 
 from logging import getLogger
+from .params import PARAMS
+from module import moduleUtils
+import re
 
 log = getLogger("module")
-
 
 def module_main(received_data: any) -> [any, str]:
     """
@@ -27,9 +29,19 @@ def module_main(received_data: any) -> [any, str]:
     log.debug("Processing ...")
 
     try:
-        # YOUR CODE HERE
+        output_message = PARAMS["MESSAGE_CONTENT"]
 
-        processed_data = received_data
+        for label in [x[2:-2] for x in re.findall("{{.*?}}", PARAMS["MESSAGE_CONTENT"])]:
+            if label.startswith("utils."):
+                # emplace function results into the output message
+                output_message = output_message.replace("{{" + label + "}}", str(getattr(moduleUtils, label[6:])()))
+            else:
+                # emplace data into the output message
+                output_message = output_message.replace("{{" + label + "}}", str(received_data[label]))
+
+        processed_data = {
+            PARAMS["MESSAGE_LABEL"]: output_message
+        }
 
         return processed_data, None
 
