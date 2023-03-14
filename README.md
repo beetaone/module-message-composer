@@ -3,7 +3,7 @@
 |                |                                       |
 | -------------- | ------------------------------------- |
 | Name           | Message Composer                           |
-| Version        | v1.0.0                                |
+| Version        | v1.0.1                                |
 | Dockerhub Link | [weevenetwork/message-composer](https://hub.docker.com/r/weevenetwork/message-composer) |
 | authors        | Jakub Grzelak                    |
 
