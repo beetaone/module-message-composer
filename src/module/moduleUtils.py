@@ -1,5 +1,6 @@
 import time
 import datetime
+from os import getenv
 
 def getTimestamp():
     return time.time()
@@ -14,3 +15,9 @@ def getDate():
 
 def getDateAndTime():
     return str(datetime.datetime.now())
+
+def getNodeID():
+    return getenv("NODE_ID", "")
+
+def getNodeName():
+    return getenv("NODE_NAME", "")

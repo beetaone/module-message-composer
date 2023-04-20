@@ -1,7 +1,7 @@
 SHELL := /bin/bash # to enable source command in run_app
 
 MODULE=weevenetwork/message-composer
-VERSION_NAME=v1.0.1
+VERSION_NAME=v1.1.0
 
 install_dev:
 	python3 -m pip install -r requirements_dev.txt
