@@ -1,6 +1,6 @@
 SHELL := /bin/bash # to enable source command in run_app
 
-MODULE=weevenetwork/message-composer
+MODULE=beetaone/message-composer
 VERSION_NAME=v1.1.0
 
 install_dev:
@@ -56,4 +56,4 @@ run_listener:
 	-e LOG_HTTP_HEADERS=true \
 	--name listener \
 	jmalloc/echo-server
-.phony: run_listener
+.phony: run_listenerener
